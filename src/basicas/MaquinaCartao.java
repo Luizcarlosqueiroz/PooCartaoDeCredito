@@ -8,12 +8,16 @@ public class MaquinaCartao {
     private String modelo;
     private String marca;
     private List<String> bandeirasAceitas;
+    private Pagamento pagamento;
+    private CartaoDeCredito cartaoCredito;
 
-    public MaquinaCartao(int id, String modelo, String marca, List<String> bandeirasAceitas) {
+    public MaquinaCartao(int id, String modelo, String marca, List<String> bandeirasAceitas, Pagamento pagamento, CartaoDeCredito cartaoCredito) {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
         this.bandeirasAceitas = bandeirasAceitas;
+        this.pagamento = pagamento;
+        this.cartaoCredito = cartaoCredito;
     }
 
     public int getId() {
@@ -48,6 +52,19 @@ public class MaquinaCartao {
         this.bandeirasAceitas = bandeirasAceitas;
     }
 
-    
-    
+    public Pagamento getModalidadePagamento() {
+        return pagamento;
+    }
+
+    public void setModalidadePagamento(Pagamento modalidadePagamento) {
+        this.pagamento = modalidadePagamento;
+    }
+
+    public CartaoDeCredito getCartaoCredito() {
+        return cartaoCredito;
+    }
+
+    public void setCartaoCredito(CartaoDeCredito cartaoCredito) {
+        this.cartaoCredito = cartaoCredito;
+    }
 }
