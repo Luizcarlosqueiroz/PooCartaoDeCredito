@@ -2,23 +2,17 @@ package basicas;
 
 public class Vendedor {
     
-    private String cnjp;
+    private int idVendedor;
+    private String cnpj;
     private String nomeFantasia;
     private String endereco;
 
-    public Vendedor(String cnjp, String nomeFantasia, String endereco) {
-        this.cnjp = cnjp;
-        this.nomeFantasia = nomeFantasia;
-        this.endereco = endereco;
-    }
-
-    public String getCnjp() {
-        return cnjp;
-    }
-
-    public void setCnjp(String cnjp) {
-        this.cnjp = cnjp;
-    }
+    //public Vendedor(int idVendedor, String cnpj, String nomeFantasia, String endereco) {
+    //    this.idVendedor = idVendedor;
+    //    this.cnpj = cnpj;
+    //    this.nomeFantasia = nomeFantasia;
+    //    this.endereco = endereco;
+    //}
 
     public String getNomeFantasia() {
         return nomeFantasia;
@@ -34,6 +28,22 @@ public class Vendedor {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public int getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(int idVendedor) {
+        this.idVendedor = idVendedor;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
     
 }
