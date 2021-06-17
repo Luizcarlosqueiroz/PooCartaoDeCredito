@@ -4,10 +4,10 @@ public class CompradorDependente extends Comprador {
 
     private String cpfDependente;
     
-     public CompradorDependente(String cpfTitular, String nomeCompleto, String telefone, String endereco, String cpfDependente) {
-        super(cpfTitular, nomeCompleto, telefone, endereco);
-        this.cpfDependente = cpfDependente;
-    }
+    //public CompradorDependente(String cpfTitular, String nomeCompleto, String telefone, String endereco, String cpfDependente) {
+    //    super(cpfTitular, nomeCompleto, telefone, endereco);
+    //    this.cpfDependente = cpfDependente;
+    //}
     
     @Override
     public String getCpfTitular() {
@@ -56,5 +56,14 @@ public class CompradorDependente extends Comprador {
     public void setCpfDependente(String cpfDependente) {
         this.cpfDependente = cpfDependente;
     }
-    
+
+    @Override
+    public int getIdComprador() {
+        return idComprador;
+    }
+
+    @Override
+    public void setIdComprador(int idComprador) {
+        this.idComprador = idComprador;
+    }
 }

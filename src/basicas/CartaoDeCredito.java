@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class CartaoDeCredito {
     
+    private int idCartaoDeCredito;
     private Date validade;
     private String numbCartao;
     private String nomeImpressoCartao;
@@ -13,16 +14,16 @@ public class CartaoDeCredito {
     private Comprador comprador;
     private InstituicaoFinanceira instituicaoFinanceira;
 
-    public CartaoDeCredito(Date validade, String numbCartao, String nomeImpressoCartao, String cvv, String bandeira, int senha, Comprador comprador, InstituicaoFinanceira instituicaoFinanceira) {
-        this.validade = validade;
-        this.numbCartao = numbCartao;
-        this.nomeImpressoCartao = nomeImpressoCartao;
-        this.cvv = cvv;
-        this.bandeira = bandeira;
-        this.senha = senha;
-        this.comprador = comprador;
-        this.instituicaoFinanceira = instituicaoFinanceira;
-    }
+    //public CartaoDeCredito(Date validade, String numbCartao, String nomeImpressoCartao, String cvv, String bandeira, int senha, Comprador comprador, InstituicaoFinanceira instituicaoFinanceira) {
+    //    this.validade = validade;
+    //    this.numbCartao = numbCartao;
+    //    this.nomeImpressoCartao = nomeImpressoCartao;
+    //    this.cvv = cvv;
+    //    this.bandeira = bandeira;
+    //    this.senha = senha;
+    //    this.comprador = comprador;
+    //    this.instituicaoFinanceira = instituicaoFinanceira;
+    //}
 
     public Date getValidade() {
         return validade;
@@ -86,6 +87,14 @@ public class CartaoDeCredito {
 
     public void setInstituicaoFinanceira(InstituicaoFinanceira instituicaoFinanceira) {
         this.instituicaoFinanceira = instituicaoFinanceira;
+    }
+
+    public int getIdCartaoDeCredito() {
+        return idCartaoDeCredito;
+    }
+
+    public void setIdCartaoDeCredito(int idCartaoDeCredito) {
+        this.idCartaoDeCredito = idCartaoDeCredito;
     }
             
 }

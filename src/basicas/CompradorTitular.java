@@ -3,9 +3,9 @@ package basicas;
 public class CompradorTitular extends Comprador{
     
 
-    public CompradorTitular(String cpfTitular, String nomeCompleto, String telefone, String endereco) {
-        super(cpfTitular, nomeCompleto, telefone, endereco);
-    }
+    //public CompradorTitular(String cpfTitular, String nomeCompleto, String telefone, String endereco) {
+    //    super(cpfTitular, nomeCompleto, telefone, endereco);
+    //}
     
     @Override
     public String getCpfTitular() {
@@ -46,5 +46,14 @@ public class CompradorTitular extends Comprador{
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
+    @Override
+    public int getIdComprador() {
+        return idComprador;
+    }
+
+    @Override
+    public void setIdComprador(int idComprador) {
+        this.idComprador = idComprador;
+    }
 }

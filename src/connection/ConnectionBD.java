@@ -13,7 +13,7 @@ public class ConnectionBD {
     private final String LOCAL_SERVIDOR = "LAPTOP-DAEMNS48";
     private final String BANCO_DE_DADOS = "PAGAMENTO3";
     private final String PORTA_BANCO = "1433";
-    private final String USUARIO = "luiz";
+    private final String USUARIO = "lc";
     private final String SENHA = "luiz1234";
 
     public Connection conectar() throws Exception {

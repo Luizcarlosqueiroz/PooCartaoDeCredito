@@ -2,17 +2,22 @@ package basicas;
 
 public abstract class Comprador {
 
+    protected int idComprador;
     protected String cpfTitular;
     protected String nomeCompleto;
     protected String telefone;
     protected String endereco;
 
-    public Comprador(String cpfTitular, String nomeCompleto, String telefone, String endereco) {
-        this.cpfTitular = cpfTitular;
-        this.nomeCompleto = nomeCompleto;
-        this.telefone = telefone;
-        this.endereco = endereco;
-    }
+    //public Comprador(String cpfTitular, String nomeCompleto, String telefone, String endereco) {
+    //    this.cpfTitular = cpfTitular;
+    //    this.nomeCompleto = nomeCompleto;
+    //    this.telefone = telefone;
+    //    this.endereco = endereco;
+    //}
+    
+    public abstract int getIdComprador();
+
+    public abstract void setIdComprador(int idComprador);
     
     public abstract String getCpfTitular();
 

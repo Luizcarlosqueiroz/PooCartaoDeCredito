@@ -1,4 +1,4 @@
-package validation;
+package model;
 
 import basicas.Vendedor;
 

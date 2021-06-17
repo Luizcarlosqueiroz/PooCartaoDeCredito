@@ -4,19 +4,21 @@ import java.time.LocalDateTime;
 
 public class Compra {
     
+    private int idCompra;
     private double valorBruto;
     private int totalItens;
     private LocalDateTime horarioCompra;
+    private String modalidadePagamento;
     private Comprador comprador;
     private Vendedor vendedor;
 
-    public Compra(double valorBruto, int totalItens, Comprador comprador, Vendedor vendedor, LocalDateTime horarioCompra) {
-        this.valorBruto = valorBruto;
-        this.totalItens = totalItens;
-        this.comprador = comprador;
-        this.vendedor = vendedor;
-        this.horarioCompra=LocalDateTime.now();
-    }
+    //public Compra(double valorBruto, int totalItens, Comprador comprador, Vendedor vendedor, LocalDateTime horarioCompra) {
+    //    this.valorBruto = valorBruto;
+    //    this.totalItens = totalItens;
+    //    this.comprador = comprador;
+    //    this.vendedor = vendedor;
+    //    this.horarioCompra=LocalDateTime.now();
+    //}
 
     public double getValorBruto() {
         return valorBruto;
@@ -57,7 +59,21 @@ public class Compra {
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
-    
-    
+
+    public int getIdCompra() {
+        return idCompra;
+    }
+
+    public void setIdCompra(int idCompra) {
+        this.idCompra = idCompra;
+    }
+
+    public String getModalidadePagamento() {
+        return modalidadePagamento;
+    }
+
+    public void setModalidadePagamento(String modalidadePagamento) {
+        this.modalidadePagamento = modalidadePagamento;
+    }
     
 }
