@@ -45,7 +45,7 @@ public class InterfacePagamento extends javax.swing.JFrame {
 
         jButton1.setText("Calcular");
 
-        jLabel3.setText("Selecione Opções de Pagamento");
+        jLabel3.setText("Selecione a opção de pagamento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

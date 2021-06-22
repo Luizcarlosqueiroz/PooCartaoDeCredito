@@ -31,12 +31,10 @@ public class InterfaceVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelIdVendedor = new javax.swing.JLabel();
         labelCnpjVendedor = new javax.swing.JLabel();
         labelNomeFantasiaVendedor = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        labelVendedor = new javax.swing.JLabel();
         labelEnderecoVendedor = new javax.swing.JLabel();
-        inputIdVendedor = new javax.swing.JTextField();
         inputCnpjVendedor = new javax.swing.JTextField();
         inputNomeFantasiaVendedor = new javax.swing.JTextField();
         inputEnderecoVendedor = new javax.swing.JTextField();
@@ -44,13 +42,11 @@ public class InterfaceVendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        labelIdVendedor.setText("ID");
-
         labelCnpjVendedor.setText("CNPJ");
 
         labelNomeFantasiaVendedor.setText("Nome Fantasia");
 
-        jLabel4.setText("Vendedor");
+        labelVendedor.setText("Vendedor");
 
         labelEnderecoVendedor.setText("Endereço");
 
@@ -70,7 +66,6 @@ public class InterfaceVendedor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelIdVendedor)
                             .addComponent(labelCnpjVendedor)
                             .addComponent(labelNomeFantasiaVendedor)
                             .addComponent(labelEnderecoVendedor))
@@ -78,25 +73,22 @@ public class InterfaceVendedor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(inputEnderecoVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                             .addComponent(inputNomeFantasiaVendedor)
-                            .addComponent(inputCnpjVendedor)
-                            .addComponent(inputIdVendedor)))
+                            .addComponent(inputCnpjVendedor)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAddVendedor)
-                            .addComponent(jLabel4))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(labelVendedor)
+                                .addGap(23, 23, 23)))))
                 .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelIdVendedor)
-                    .addComponent(inputIdVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(48, 48, 48)
+                .addComponent(labelVendedor)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCnpjVendedor)
                     .addComponent(inputCnpjVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,12 +170,10 @@ public class InterfaceVendedor extends javax.swing.JFrame {
     private javax.swing.JButton btnAddVendedor;
     private javax.swing.JTextField inputCnpjVendedor;
     private javax.swing.JTextField inputEnderecoVendedor;
-    private javax.swing.JTextField inputIdVendedor;
     private javax.swing.JTextField inputNomeFantasiaVendedor;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel labelCnpjVendedor;
     private javax.swing.JLabel labelEnderecoVendedor;
-    private javax.swing.JLabel labelIdVendedor;
     private javax.swing.JLabel labelNomeFantasiaVendedor;
+    private javax.swing.JLabel labelVendedor;
     // End of variables declaration//GEN-END:variables
 }

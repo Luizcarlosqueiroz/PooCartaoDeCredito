@@ -117,7 +117,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Selecione Op&#xe7;&#xf5;es de Pagamento"/>
+        <Property name="text" type="java.lang.String" value="Selecione a op&#xe7;&#xe3;o de pagamento"/>
       </Properties>
     </Component>
   </SubComponents>
