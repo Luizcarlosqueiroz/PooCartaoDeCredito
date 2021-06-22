@@ -5,9 +5,9 @@ import dados.InstituicaoFinanceiraDados;
 
 public class InstituicaoFinanceiraNegocio {
     
-    public void inserirVendedor(InstituicaoFinanceira instituicaoFinanceira) throws Exception{
+    public void inserirInstituicaoFinanceira(InstituicaoFinanceira instituicaoFinanceira) throws Exception{
         if (instituicaoFinanceira == null) {
-            throw new Exception("Insira os dados do vendedor.");
+            throw new Exception("Insira os dados da instituição financeira.");
         }
         
         if (instituicaoFinanceira.getCnpj() == null) {
@@ -17,7 +17,7 @@ public class InstituicaoFinanceiraNegocio {
             throw new Exception("Insira o nome fantasia.");
         }
         if (instituicaoFinanceira.getEndereco() == null) {
-            throw new Exception("Insira o endereço do lojista.");
+            throw new Exception("Insira o endereço da instituição financeira.");
         }
                 
         if (instituicaoFinanceira.getCnpj().replaceAll("\\D+","").length() != 14){
@@ -44,7 +44,7 @@ public class InstituicaoFinanceiraNegocio {
     
     public void atualizarInstituicaoFinanceira(InstituicaoFinanceira instituicaoFinanceira) throws Exception {
         if (instituicaoFinanceira == null) {
-            throw new Exception("Insira os dados do vendedor.");
+            throw new Exception("Insira os dados da instituição financeira.");
         }
         
         if (instituicaoFinanceira.getCnpj() == null) {
