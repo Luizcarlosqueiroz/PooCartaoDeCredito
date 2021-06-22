@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="labelCvv" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelNumbCartao" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelBandeira" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelInstituicaoFinanceira" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelIdComprador" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelNomeImpressoCartao" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelValidade" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="selectBandeira" min="-2" max="-2" attributes="0"/>
+                          <Component id="inputSenha" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="inputNumbCartao" pref="105" max="32767" attributes="0"/>
+                          <Component id="inputIdInstituicaoFinanceira" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputCvv" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputIdComprador" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="inputNomeImpressoCartao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputValidade" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="labelAddCartao" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+              <Component id="btnAddCartao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="labelAddCartao" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="selectBandeira" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="labelBandeira" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelInstituicaoFinanceira" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputIdInstituicaoFinanceira" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelNumbCartao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputNumbCartao" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="inputCvv" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelCvv" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelValidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputValidade" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelIdComprador" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputIdComprador" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelNomeImpressoCartao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputNomeImpressoCartao" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="inputSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnAddCartao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="labelAddCartao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adicione um Cart&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="inputSenha">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="selectBandeira">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="visa"/>
+            <StringItem index="1" value="master card"/>
+            <StringItem index="2" value="hipercard"/>
+            <StringItem index="3" value="elo"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectBandeiraActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNumbCartao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero do Cart&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNomeImpressoCartao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome no Cart&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelValidade">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data de expira&#xe7;&#xe3;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelCvv">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo CVV"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelBandeira">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bandeira"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelInstituicaoFinanceira">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Instituicao Financeira"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelIdComprador">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Id Comprador"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputCvv">
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputIdComprador">
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputIdInstituicaoFinanceira">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputIdInstituicaoFinanceiraActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputNomeImpressoCartao">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="inputValidade">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="MM/yyyy" subtype="-1" type="1"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelSenha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="inputNumbCartao">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="####.####.####.####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAddCartao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adicionar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCartaoActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
