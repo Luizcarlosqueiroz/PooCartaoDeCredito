@@ -15,8 +15,8 @@ public class ConnectionBD {
     private final String PORTA_BANCO = "1433";
     private final String USUARIO = "lc";
     private final String SENHA = "luiz1234";
-
-    public Connection conectar() throws Exception {
+ 
+   public Connection conectar() throws Exception {
         return this.conectarSqlServer();
     }
 

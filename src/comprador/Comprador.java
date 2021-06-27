@@ -1,40 +1,52 @@
 package comprador;
 
-public abstract class Comprador {
+public class Comprador {
 
-    protected int idComprador;
-    protected String cpfTitular;
-    protected String nomeCompleto;
-    protected String telefone;
-    protected String endereco;
+    private int idComprador;
+    private String cpfTitular;
+    private String nomeCompleto;
+    private String telefone;
+    private String endereco;
 
-    //public Comprador(String cpfTitular, String nomeCompleto, String telefone, String endereco) {
-    //    this.cpfTitular = cpfTitular;
-    //    this.nomeCompleto = nomeCompleto;
-    //    this.telefone = telefone;
-    //    this.endereco = endereco;
-    //}
+    public int getIdComprador() {
+        return idComprador;
+    }
+
+    public void setIdComprador(int idComprador) {
+        this.idComprador = idComprador;
+    }
+
+    public String getCpfTitular() {
+        return cpfTitular;
+    }
+
+    public void setCpfTitular(String cpfTitular) {
+        this.cpfTitular = cpfTitular;
+    }
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     
-    public abstract int getIdComprador();
-
-    public abstract void setIdComprador(int idComprador);
-    
-    public abstract String getCpfTitular();
-
-    public abstract void setCpfTitular(String cpfTitular);
-
-    public abstract String getNomeCompleto();
-
-    public abstract void setNomeCompleto(String nomeCompleto);
-
-    public abstract String getTelefone();
-
-    public abstract void setTelefone(String telefone);
-
-    public abstract String getEndereco();
-
-    public abstract void setEndereco(String endereco);
-
-
-
 }
