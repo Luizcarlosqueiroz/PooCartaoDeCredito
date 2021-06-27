@@ -1,8 +1,9 @@
 package cartao;
 
 
-import cartao.CartaoDeCredito;
-import cartao.CartaoNegocios;
+import java.text.DateFormat;
+import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,6 +22,7 @@ public class InterfaceCartao extends javax.swing.JFrame {
      */
     public InterfaceCartao() {
         initComponents();
+        selectBandeira.setSelectedIndex(-1);
     }
 
     /**
@@ -46,16 +48,22 @@ public class InterfaceCartao extends javax.swing.JFrame {
         inputIdComprador = new javax.swing.JTextField();
         inputIdInstituicaoFinanceira = new javax.swing.JTextField();
         inputNomeImpressoCartao = new javax.swing.JTextField();
-        inputValidade = new javax.swing.JFormattedTextField();
         labelSenha = new javax.swing.JLabel();
         inputNumbCartao = new javax.swing.JFormattedTextField();
         btnAddCartao = new javax.swing.JButton();
+        jFormattedTextFieldDATAexpira = new javax.swing.JFormattedTextField();
+        jTextFieldSenha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelAddCartao.setText("Adicione um Cartão");
 
         selectBandeira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "visa", "master card", "hipercard", "elo" }));
+        selectBandeira.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectBandeiraItemStateChanged(evt);
+            }
+        });
         selectBandeira.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectBandeiraActionPerformed(evt);
@@ -82,8 +90,6 @@ public class InterfaceCartao extends javax.swing.JFrame {
             }
         });
 
-        inputValidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM/yyyy"))));
-
         labelSenha.setText("Senha");
 
         try {
@@ -98,6 +104,19 @@ public class InterfaceCartao extends javax.swing.JFrame {
                 btnAddCartaoActionPerformed(evt);
             }
         });
+
+        try {
+            jFormattedTextFieldDATAexpira.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldDATAexpira.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldDATAexpiraActionPerformed(evt);
+            }
+        });
+
+        jTextFieldSenha.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,24 +135,32 @@ public class InterfaceCartao extends javax.swing.JFrame {
                             .addComponent(labelNomeImpressoCartao)
                             .addComponent(labelValidade)
                             .addComponent(labelSenha))
-                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(selectBandeira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputNumbCartao, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(inputIdInstituicaoFinanceira)
-                            .addComponent(inputCvv)
-                            .addComponent(inputIdComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputNomeImpressoCartao)
-                            .addComponent(inputValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(btnAddCartao)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(inputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jFormattedTextFieldDATAexpira, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(43, 43, 43))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(selectBandeira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputNumbCartao, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                    .addComponent(inputIdInstituicaoFinanceira)
+                                    .addComponent(inputCvv)
+                                    .addComponent(inputIdComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inputNomeImpressoCartao)
+                                    .addComponent(jTextFieldSenha))
+                                .addGap(56, 56, 56))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(labelAddCartao)
                         .addGap(167, 167, 167))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(btnAddCartao)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +189,7 @@ public class InterfaceCartao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelValidade)
-                    .addComponent(inputValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldDATAexpira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelIdComprador)
@@ -172,12 +199,17 @@ public class InterfaceCartao extends javax.swing.JFrame {
                     .addComponent(labelNomeImpressoCartao)
                     .addComponent(inputNomeImpressoCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelSenha))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelSenha)
+                    .addComponent(jTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddCartao)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAddCartao)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(inputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -194,42 +226,48 @@ public class InterfaceCartao extends javax.swing.JFrame {
     private void btnAddCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCartaoActionPerformed
         
         try {
+            
+            
             CartaoDeCredito cartao = new CartaoDeCredito();
+            
+           
+            
+            
+            
+            String dataString = jFormattedTextFieldDATAexpira.getText();
+            DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+            java.sql.Date data = new java.sql.Date(fmt.parse(dataString).getTime());
               
+            cartao.setValidade(data);
             cartao.setNumbCartao(inputNumbCartao.getText());
             cartao.setNomeImpressoCartao(inputNomeImpressoCartao.getText());
             cartao.setCvv(inputCvv.getText());
             cartao.setBandeira(selectBandeira.getSelectedItem().toString());  //?????
-            cartao.setSenha(Integer.parseInt(inputSenha.getText()));
-            
-            //cartao.setValidade(validade);  //RESOLVER DATA!
-            //cartao.setIdCartaoDeCredito(Integer.parseInt(inputIdCartao.getText())); //A PESSOA ADD ID??? SE FOR = ?
-                    
-            
+            cartao.setSenha(jTextFieldSenha.getText());
             cartao.getComprador().setIdComprador(Integer.parseInt(inputIdComprador.getText()));
             cartao.getInstituicaoFinanceira().setIdInstituicaoFinanceira(Integer.parseInt(inputIdInstituicaoFinanceira.getText()));
             
             
             
             CartaoNegocios dados = new CartaoNegocios();
-            dados.inserirCartao(cartao);
+            dados.CadastrarCartao(cartao);
             
             
-            inputNumbCartao.setText("");
-            inputNomeImpressoCartao.setText("");
-            inputCvv.setText("");
-            selectBandeira.setSelectedIndex(-1);
-            inputSenha.setText("");
-            inputNumbCartao.setText("");
-            
-            //JOptionPane.showMessageDialog(null,"Cartão cadastrado com sucesso.");
-            
+            JOptionPane.showMessageDialog(null,"Cartão cadastrado com sucesso."); 
         } catch (Exception e) {
-            //JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+         JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+		}
 
 
     }//GEN-LAST:event_btnAddCartaoActionPerformed
+
+    private void selectBandeiraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectBandeiraItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectBandeiraItemStateChanged
+
+    private void jFormattedTextFieldDATAexpiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDATAexpiraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldDATAexpiraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,7 +312,8 @@ public class InterfaceCartao extends javax.swing.JFrame {
     private javax.swing.JTextField inputNomeImpressoCartao;
     private javax.swing.JFormattedTextField inputNumbCartao;
     private javax.swing.JPasswordField inputSenha;
-    private javax.swing.JFormattedTextField inputValidade;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDATAexpira;
+    private javax.swing.JTextField jTextFieldSenha;
     private javax.swing.JLabel labelAddCartao;
     private javax.swing.JLabel labelBandeira;
     private javax.swing.JLabel labelCvv;

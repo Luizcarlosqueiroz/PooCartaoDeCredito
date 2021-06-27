@@ -12,7 +12,7 @@ public class CartaoDeCredito {
     private String nomeImpressoCartao;
     private String cvv;
     private String bandeira;
-    private int senha;
+    private String senha;
     private Comprador comprador;
     private InstituicaoFinanceira instituicaoFinanceira;
 
@@ -67,11 +67,11 @@ public class CartaoDeCredito {
         this.bandeira = bandeira;
     }
 
-    public int getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

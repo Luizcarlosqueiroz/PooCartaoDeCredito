@@ -1,9 +1,9 @@
 package vendedor;
 
 
-import vendedor.Vendedor;
+
+
 import javax.swing.JOptionPane;
-import vendedor.VendedorNegocio;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,10 +37,10 @@ public class InterfaceVendedor extends javax.swing.JFrame {
         labelNomeFantasiaVendedor = new javax.swing.JLabel();
         labelVendedor = new javax.swing.JLabel();
         labelEnderecoVendedor = new javax.swing.JLabel();
-        inputCnpjVendedor = new javax.swing.JTextField();
         inputNomeFantasiaVendedor = new javax.swing.JTextField();
         inputEnderecoVendedor = new javax.swing.JTextField();
         btnAddVendedor = new javax.swing.JButton();
+        imputCnpjVendedor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,26 +64,30 @@ public class InterfaceVendedor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelCnpjVendedor)
                             .addComponent(labelNomeFantasiaVendedor)
                             .addComponent(labelEnderecoVendedor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(inputEnderecoVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                            .addComponent(inputNomeFantasiaVendedor)
-                            .addComponent(inputCnpjVendedor)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddVendedor)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(labelVendedor)
-                                .addGap(23, 23, 23)))))
-                .addGap(91, 91, 91))
+                            .addComponent(inputEnderecoVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                            .addComponent(inputNomeFantasiaVendedor, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(91, 91, 91))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelCnpjVendedor)
+                        .addGap(33, 33, 33)
+                        .addComponent(imputCnpjVendedor)
+                        .addGap(122, 122, 122))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddVendedor)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelVendedor)
+                        .addGap(23, 23, 23)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +97,7 @@ public class InterfaceVendedor extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCnpjVendedor)
-                    .addComponent(inputCnpjVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imputCnpjVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNomeFantasiaVendedor)
@@ -116,7 +120,7 @@ public class InterfaceVendedor extends javax.swing.JFrame {
         
         Vendedor vendedor = new Vendedor();
         
-        vendedor.setCnpj(inputCnpjVendedor.getText());
+        vendedor.setCnpj(imputCnpjVendedor.getText());
         vendedor.setNomeFantasia(inputNomeFantasiaVendedor.getText());
         vendedor.setEndereco(inputEnderecoVendedor.getText());
         
@@ -124,7 +128,7 @@ public class InterfaceVendedor extends javax.swing.JFrame {
         dados.inserirVendedor(vendedor);
         JOptionPane.showMessageDialog(this,"Vendedor cadastrado com sucesso");
             
-        inputCnpjVendedor.setText("");
+        imputCnpjVendedor.setText("");
         inputNomeFantasiaVendedor.setText("");
         inputEnderecoVendedor.setText("");
             
@@ -170,7 +174,7 @@ public class InterfaceVendedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddVendedor;
-    private javax.swing.JTextField inputCnpjVendedor;
+    private javax.swing.JTextField imputCnpjVendedor;
     private javax.swing.JTextField inputEnderecoVendedor;
     private javax.swing.JTextField inputNomeFantasiaVendedor;
     private javax.swing.JLabel labelCnpjVendedor;

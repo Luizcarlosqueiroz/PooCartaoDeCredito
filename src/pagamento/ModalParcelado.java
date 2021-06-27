@@ -22,4 +22,8 @@ public class ModalParcelado extends Pagamento {
         }
         return valorAcrescimoParcela;
     }
+    
+    public double getTaxaOperacao() {
+        return taxaOperacao;
+    }
 }

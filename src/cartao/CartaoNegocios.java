@@ -1,11 +1,10 @@
 package cartao;
 
-import cartao.CartaoDeCredito;
-import cartao.CartaoDeCreditoDados;
+
 
 public class CartaoNegocios {
     
-    public void inserirCartao(CartaoDeCredito cartao) throws Exception {
+    public void CadastrarCartao(CartaoDeCredito cartao) throws Exception {
         if (cartao == null) {
             throw new Exception("Insira os dados do cartao.");
         }
@@ -54,12 +53,15 @@ public class CartaoNegocios {
             throw new Exception("Insira uma bandeira válida.");
         }
         
-        if (cartao.getSenha() < 1000 || cartao.getSenha() > 999999) {
-            throw new Exception("Verifique sua senha.");
+        if (cartao.getSenha().matches("[0-9]+") != true){
+            throw new Exception("A senha de cartão deve contar apenas números.");
+        }
+        if (cartao.getSenha().trim().length() >= 10) {
+            throw new Exception("O de senha deve ter até 10 números.");
         }
         
-        CartaoDeCreditoDados dadosC = new CartaoDeCreditoDados();
-        dadosC.cadastrarCartaoDeCredito(cartao);
+        CartaoDeCreditoDados dados = new CartaoDeCreditoDados();
+        dados.cadastrarCartaoDeCredito(cartao);
     }
     
     public void atualizarCartao(CartaoDeCredito cartao) throws Exception {
@@ -111,10 +113,12 @@ public class CartaoNegocios {
             throw new Exception("Insira uma bandeira válida.");
         }
         
-        if (cartao.getSenha() < 1000 || cartao.getSenha() > 999999) {
-            throw new Exception("Verifique sua senha.");
+        if (cartao.getSenha().matches("[0-9]+") != true){
+            throw new Exception("A senha de cartão deve contar apenas números.");
         }
-        
+        if (cartao.getSenha().trim().length() >= 10) {
+            throw new Exception("O de senha deve ter até 10 números.");
+        }
         CartaoDeCreditoDados dadosC = new CartaoDeCreditoDados();
         dadosC.atualizarCartaoDeCredito(cartao);
     }

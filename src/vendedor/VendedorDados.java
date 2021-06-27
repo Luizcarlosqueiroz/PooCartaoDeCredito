@@ -1,6 +1,6 @@
 package vendedor;
 
-import vendedor.Vendedor;
+
 import connection.ConnectionBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

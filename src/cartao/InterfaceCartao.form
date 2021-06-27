@@ -37,29 +37,42 @@
                           <Component id="labelValidade" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="selectBandeira" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputSenha" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="inputNumbCartao" pref="105" max="32767" attributes="0"/>
-                          <Component id="inputIdInstituicaoFinanceira" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputCvv" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputIdComprador" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="inputNomeImpressoCartao" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputValidade" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="btnAddCartao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="inputSenha" min="-2" pref="59" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jFormattedTextFieldDATAexpira" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="selectBandeira" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inputNumbCartao" pref="105" max="32767" attributes="0"/>
+                                  <Component id="inputIdInstituicaoFinanceira" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="inputCvv" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="inputIdComprador" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="inputNomeImpressoCartao" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldSenha" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="labelAddCartao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
-              <Component id="btnAddCartao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,7 +109,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelValidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="inputValidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldDATAexpira" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -109,13 +122,21 @@
                   <Component id="inputNomeImpressoCartao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="inputSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="labelSenha" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldSenha" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnAddCartao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnAddCartao" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="inputSenha" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -140,6 +161,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selectBandeiraItemStateChanged"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectBandeiraActionPerformed"/>
       </Events>
       <AuxValues>
@@ -192,13 +214,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="inputNomeImpressoCartao">
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="inputValidade">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="MM/yyyy" subtype="-1" type="1"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="labelSenha">
       <Properties>
         <Property name="text" type="java.lang.String" value="Senha"/>
@@ -218,6 +233,21 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCartaoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDATAexpira">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##/##/####" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldDATAexpiraActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldSenha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -23,34 +23,39 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelCnpjVendedor" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelNomeFantasiaVendedor" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="labelEnderecoVendedor" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="75" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="inputEnderecoVendedor" pref="78" max="32767" attributes="0"/>
-                          <Component id="inputNomeFantasiaVendedor" max="32767" attributes="0"/>
-                          <Component id="inputCnpjVendedor" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="inputEnderecoVendedor" pref="298" max="32767" attributes="0"/>
+                          <Component id="inputNomeFantasiaVendedor" alignment="1" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAddVendedor" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="labelVendedor" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="labelCnpjVendedor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="imputCnpjVendedor" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnAddVendedor" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="labelVendedor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,7 +67,7 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelCnpjVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="inputCnpjVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="imputCnpjVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -102,8 +107,6 @@
         <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="inputCnpjVendedor">
-    </Component>
     <Component class="javax.swing.JTextField" name="inputNomeFantasiaVendedor">
     </Component>
     <Component class="javax.swing.JTextField" name="inputEnderecoVendedor">
@@ -115,6 +118,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddVendedorActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="imputCnpjVendedor">
     </Component>
   </SubComponents>
 </Form>
