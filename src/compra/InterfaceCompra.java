@@ -1,24 +1,162 @@
-package compra;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package compra;
+
+import javax.swing.JOptionPane;
+import pagamento.ModalCredito;
+import pagamento.ModalParcelado;
+import pagamento.ModalRotativo;
+import pagamento.Pagamento;
 
 /**
  *
  * @author Marília
  */
 public class InterfaceCompra extends javax.swing.JFrame {
-
-    /**
-     * Creates new form InterfaceCompra
-     */
+    
+    String etapa = "compra";
+    String metodoPagamento = "";
+    int qtdParcelas = 1;
+    
+    String saidaInstrucao = "";
+    String saidaUsuario = "";
+    String entradaUsuario = "";
+    Double valorCompra;
+    String senhaUsuario;
+    
+    
     public InterfaceCompra() {
         initComponents();
+        
+        if (etapa.equals("compra")){
+            displayCompra();
+        } else if (etapa.equals("modoPagamento")){
+            displayModoPagamento();
+        }    
+        
+        
+        
+        
     }
 
+    private void displayCompra(){
+        labelTitulo.setText("Insira Valor da Compra");
+            labelValor.setVisible(true);
+            txtValor.setVisible(true);
+            labelValueValor.setVisible(false);
+            btnConfirmar.setText("Inserir Método de Pagamento");
+            
+            labelModoPagamento.setVisible(false);
+            selectModoPagamento.setVisible(false);
+            labelParcelas.setVisible(false);
+            selectParcelas.setVisible(false);
+            labelTaxaEmPercent.setVisible(false);
+            labelValueTaxaEmPercent.setVisible(false);
+            labelTaxaEmReal.setVisible(false);
+            labelValueTaxaEmReal.setVisible(false);
+            labelValorLiq.setVisible(false);
+            labelValueValorLiq.setVisible(false);
+    }
+    
+    private void displayModoPagamento(){
+        labelTitulo.setText("Selecione Método de Pagamento");
+        labelValor.setVisible(true);
+            txtValor.setVisible(false);
+            labelValueValor.setVisible(true);
+            btnConfirmar.setText("Confirmar");
+            
+            labelModoPagamento.setVisible(true);
+            selectModoPagamento.setVisible(true);
+            labelParcelas.setVisible(true);
+            selectParcelas.setVisible(true);
+            labelTaxaEmPercent.setVisible(true);
+            labelValueTaxaEmPercent.setVisible(true);
+            labelTaxaEmReal.setVisible(true);
+            labelValueTaxaEmReal.setVisible(true);
+            labelValorLiq.setVisible(true);
+            labelValueValorLiq.setVisible(true);    
+    
+    }
+    
+    public void gerarCompra(){
+    try {
+                Compra compra = new Compra();
+            
+                if (txtValor.getText().matches("[0-9]+") == false) {
+                    JOptionPane.showMessageDialog(this, "Valor Inválido");
+                    //VERIFICAR OUTRAS CONFIRMACOES !!!
+                    return;
+                }
+                labelValueValor.setText(txtValor.getText());
+                displayModoPagamento();
+                etapa = "metodoPagamento";
+                compra.setValorBruto(Double.parseDouble(txtValor.getText()));
+                //VERIFICAR SE VAI INSERIR MAIS ALGUM DADO DE COMPRA !!!
+                
+                CompraNegocios dadosCompra = new CompraNegocios();
+                dadosCompra.inserirCompra(compra);
+                JOptionPane.showMessageDialog(this, "Compra Cadastrada");
+            
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }         
+    }
+    
+    public void gerarPagamento(String metodoPagamento){
+        
+        try{
+            Pagamento pagamento = new Pagamento(); //PRECISO CRIAR PAGAMENTO OU CRIO O MODAL???
+        
+            switch (metodoPagamento) {
+                case "debito":
+                    ModalRotativo pagamentoDebito = new ModalRotativo();
+                    labelParcelas.setVisible(false);
+                    selectParcelas.setVisible(false);
+                    calcularTaxasEValorLiq();
+                    break;
+                case "creditoAVista":
+                    ModalCredito pagamentoCreditoAVista = new ModalCredito();
+                    labelParcelas.setVisible(false);
+                    selectParcelas.setVisible(false);
+                    calcularTaxasEValorLiq();
+                    break;
+                case "creditoParcelado":
+                    ModalParcelado pagamentoCreditoParcelado = new ModalParcelado();
+                    labelParcelas.setVisible(true);
+                    selectParcelas.setVisible(true);
+                    
+                    // !!! E NECESSARIO SETAR QTD PARCELAS LA NO CODIGO, DE ACORDO COM VALOR BRUTO
+                    qtdParcelas = pagamentoCreditoParcelado.getQtdMaxParcelas();
+                    
+                    selectParcelas.addItem("1x");
+                    if (qtdParcelas == 2){
+                        selectParcelas.addItem("2x");
+                    } else if (qtdParcelas ==3){
+                        selectParcelas.addItem("2x");
+                        selectParcelas.addItem("3x");
+                    }
+                    break;
+                default:
+                    return;
+            }
+            
+        } catch  (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }  
+    }
+    
+    public void calcularTaxasEValorLiq(){
+                        // !!! PAGAMENTO ESTA SEM CLASSE DE NEGOCIO
+            // consigo acessar tudo direto aqui embaixo?? sem saber especificamente qual tipo de pagamento foi criado?
+            labelValueTaxaEmPercent.setText(pagamento.getTaxaOperacao().toString());
+            labelValueTaxaEmReal.setText(((pagamento.getTaxaOperacao())*(compra.getValorBruto())).toString());
+            labelValueValorLiq.setText(pagamento.calcularValorLiquido.toString());   
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,119 +165,163 @@ public class InterfaceCompra extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        labelValor = new javax.swing.JLabel();
+        txtValor = new javax.swing.JTextField();
+        labelModoPagamento = new javax.swing.JLabel();
+        labelParcelas = new javax.swing.JLabel();
+        labelTaxaEmReal = new javax.swing.JLabel();
+        labelValueTaxaEmPercent = new javax.swing.JLabel();
+        labelTaxaEmPercent = new javax.swing.JLabel();
+        labelValueTaxaEmReal = new javax.swing.JLabel();
+        labelValorLiq = new javax.swing.JLabel();
+        labelValueValorLiq = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        btnConfirmar = new javax.swing.JButton();
+        selectParcelas = new javax.swing.JComboBox<>();
+        selectModoPagamento = new javax.swing.JComboBox<>();
+        labelValueValor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Valor Bruto");
+        labelValor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labelValor.setText("Valor R$");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(labelValor, gridBagConstraints);
 
-        jLabel2.setText("Taxa (%)");
+        txtValor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.weightx = 0.1;
+        getContentPane().add(txtValor, gridBagConstraints);
 
-        jLabel3.setText("Taxa a Pagar");
+        labelModoPagamento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelModoPagamento.setText("Modo de Pagamento");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        getContentPane().add(labelModoPagamento, gridBagConstraints);
 
-        jLabel4.setText("Valor Líquido");
+        labelParcelas.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelParcelas.setText("Parcelas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        getContentPane().add(labelParcelas, gridBagConstraints);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        labelTaxaEmReal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelTaxaEmReal.setText("Taxa a pagar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(labelTaxaEmReal, gridBagConstraints);
 
-        jLabel5.setText("R$");
+        labelValueTaxaEmPercent.setText("%");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipadx = 60;
+        getContentPane().add(labelValueTaxaEmPercent, gridBagConstraints);
 
-        jLabel6.setText("-- %");
+        labelTaxaEmPercent.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelTaxaEmPercent.setText("Taxa (%)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        getContentPane().add(labelTaxaEmPercent, gridBagConstraints);
 
-        jLabel7.setText("R$");
+        labelValueTaxaEmReal.setText("R$");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 60;
+        getContentPane().add(labelValueTaxaEmReal, gridBagConstraints);
 
-        jLabel8.setText("R$");
+        labelValorLiq.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelValorLiq.setText("Valor Líquido");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        getContentPane().add(labelValorLiq, gridBagConstraints);
 
-        jButton1.setText("Confirmar Compra");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        labelValueValorLiq.setText("R$");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.ipadx = 60;
+        getContentPane().add(labelValueValorLiq, gridBagConstraints);
+
+        labelTitulo.setText("Selecione a forma de pagamento");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        getContentPane().add(labelTitulo, gridBagConstraints);
+
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConfirmarActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        getContentPane().add(btnConfirmar, gridBagConstraints);
 
-        jLabel9.setText("Confirme a sua Compra");
+        selectParcelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectParcelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectParcelasActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 60;
+        getContentPane().add(selectParcelas, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(27, 27, 27))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(jLabel9)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(149, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(66, 66, 66))))
-        );
+        selectModoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 60;
+        getContentPane().add(selectModoPagamento, gridBagConstraints);
+
+        labelValueValor.setText("R$");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 60;
+        getContentPane().add(labelValueValor, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        if (etapa.equals("compra")){
+            gerarCompra();
+            
+        } else if (etapa.equals("metodoPagamento")){
+            
+            metodoPagamento = selectModoPagamento.getSelectedItem().toString();
+            gerarPagamento(metodoPagamento);
+        }
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void selectParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectParcelasActionPerformed
+        
+        //!!!! ATUALIZAR QTD PARCELAS
+        
+        calcularTaxasEValorLiq();
+    }//GEN-LAST:event_selectParcelasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,17 +359,20 @@ public class InterfaceCompra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton btnConfirmar;
+    private javax.swing.JLabel labelModoPagamento;
+    private javax.swing.JLabel labelParcelas;
+    private javax.swing.JLabel labelTaxaEmPercent;
+    private javax.swing.JLabel labelTaxaEmReal;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelValor;
+    private javax.swing.JLabel labelValorLiq;
+    private javax.swing.JLabel labelValueTaxaEmPercent;
+    private javax.swing.JLabel labelValueTaxaEmReal;
+    private javax.swing.JLabel labelValueValor;
+    private javax.swing.JLabel labelValueValorLiq;
+    private javax.swing.JComboBox<String> selectModoPagamento;
+    private javax.swing.JComboBox<String> selectParcelas;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
