@@ -11,4 +11,7 @@ public class Pagamento {
         return valorBruto * (1 - taxaOperacao);
     };
     
+    public double calcularTaxaPaga(double valorBruto, double taxaOperacao){
+        return valorBruto * taxaOperacao;
+    }
 }

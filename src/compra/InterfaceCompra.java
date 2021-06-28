@@ -5,6 +5,7 @@
  */
 package compra;
 
+import java.util.Date;
 import javax.swing.JOptionPane;
 import pagamento.ModalCredito;
 import pagamento.ModalParcelado;
@@ -16,6 +17,8 @@ import pagamento.Pagamento;
  * @author Marília
  */
 public class InterfaceCompra extends javax.swing.JFrame {
+    
+    Compra compra = new Compra();
     
     String etapa = "compra";
     String metodoPagamento = "";
@@ -36,9 +39,6 @@ public class InterfaceCompra extends javax.swing.JFrame {
         } else if (etapa.equals("modoPagamento")){
             displayModoPagamento();
         }    
-        
-        
-        
         
     }
 
@@ -82,62 +82,89 @@ public class InterfaceCompra extends javax.swing.JFrame {
     }
     
     public void gerarCompra(){
-    try {
-                Compra compra = new Compra();
+        try {
+            //Compra compra = new Compra();
             
-                if (txtValor.getText().matches("[0-9]+") == false) {
-                    JOptionPane.showMessageDialog(this, "Valor Inválido");
-                    //VERIFICAR OUTRAS CONFIRMACOES !!!
-                    return;
-                }
-                labelValueValor.setText(txtValor.getText());
-                displayModoPagamento();
-                etapa = "metodoPagamento";
-                compra.setValorBruto(Double.parseDouble(txtValor.getText()));
-                //VERIFICAR SE VAI INSERIR MAIS ALGUM DADO DE COMPRA !!!
-                
-                CompraNegocios dadosCompra = new CompraNegocios();
-                dadosCompra.inserirCompra(compra);
-                JOptionPane.showMessageDialog(this, "Compra Cadastrada");
+            if (txtValor.getText().matches("[0-9]+") == false) {
+                JOptionPane.showMessageDialog(this, "Valor Inválido");
+                return;
+            }
             
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }         
+            compra.setValorBruto(Double.parseDouble(txtValor.getText()));
+            compra.setDiaCompra(new Date());
+            // Comprador e Vendedor podem ser inderidos por suas interfaces
+            // Nesse caso, como seria necessário listar cada um para saber o id de cada, usamos por padrão id 1
+
+            compra.getComprador().setIdComprador(1);
+            compra.getVendedor().setIdVendedor(1);
+            
+            CompraNegocios dadosCompra = new CompraNegocios();
+            dadosCompra.inserirCompra(compra);
+            JOptionPane.showMessageDialog(this, "Compra Cadastrada");
+                        
+            labelValueValor.setText(txtValor.getText());
+            displayModoPagamento();
+            etapa = "metodoPagamento";
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }         
     }
     
     public void gerarPagamento(String metodoPagamento){
         
         try{
             Pagamento pagamento = new Pagamento(); //PRECISO CRIAR PAGAMENTO OU CRIO O MODAL???
-        
+            
+            double taxa;
+            double liquido;
+            double taxaPaga;
+            
             switch (metodoPagamento) {
                 case "debito":
                     ModalRotativo pagamentoDebito = new ModalRotativo();
                     labelParcelas.setVisible(false);
                     selectParcelas.setVisible(false);
-                    calcularTaxasEValorLiq();
+                    
+                    taxa = pagamentoDebito.getTaxaOperacao();
+                    liquido = pagamento.calcularValorLiquido(compra.getValorBruto(), taxa);
+                    taxaPaga = pagamento.calcularTaxaPaga(compra.getValorBruto(), taxa);
+                    
+                    imprimirResultados(taxa, liquido, taxaPaga);
                     break;
                 case "creditoAVista":
                     ModalCredito pagamentoCreditoAVista = new ModalCredito();
                     labelParcelas.setVisible(false);
                     selectParcelas.setVisible(false);
-                    calcularTaxasEValorLiq();
+                    
+                    taxa = pagamentoCreditoAVista.getTaxaOperacao();
+                    liquido = pagamento.calcularValorLiquido(compra.getValorBruto(), taxa);
+                    taxaPaga = pagamento.calcularTaxaPaga(compra.getValorBruto(), taxa);
+                    
+                    imprimirResultados(taxa, liquido, taxaPaga);
                     break;
                 case "creditoParcelado":
                     ModalParcelado pagamentoCreditoParcelado = new ModalParcelado();
                     labelParcelas.setVisible(true);
                     selectParcelas.setVisible(true);
                     
-                    // !!! E NECESSARIO SETAR QTD PARCELAS LA NO CODIGO, DE ACORDO COM VALOR BRUTO
-                    qtdParcelas = pagamentoCreditoParcelado.getQtdMaxParcelas();
+                    pagamentoCreditoParcelado.setQuantidadeMaxParcelas(compra.getValorBruto());
+                    qtdParcelas = pagamentoCreditoParcelado.getQuantidadeMaxParcelas();
                     
                     selectParcelas.addItem("1x");
                     if (qtdParcelas == 2){
                         selectParcelas.addItem("2x");
-                    } else if (qtdParcelas ==3){
+                    } else if (qtdParcelas == 3){
                         selectParcelas.addItem("2x");
                         selectParcelas.addItem("3x");
                     }
+                    
+                    pagamentoCreditoParcelado.setTaxaTotal(qtdParcelas);
+                    taxa = pagamentoCreditoParcelado.getTaxaTotal();
+                    liquido = pagamento.calcularValorLiquido(compra.getValorBruto(), taxa);
+                    taxaPaga = pagamento.calcularTaxaPaga(compra.getValorBruto(), taxa);
+                    
+                    imprimirResultados(taxa, liquido, taxaPaga);
                     break;
                 default:
                     return;
@@ -148,12 +175,13 @@ public class InterfaceCompra extends javax.swing.JFrame {
         }  
     }
     
+    public void imprimirResultados(double taxa, double liquido, double taxaPaga) {
+            labelValueTaxaEmPercent.setText(String.valueOf(taxa));
+            labelValueTaxaEmReal.setText(String.valueOf(taxaPaga));
+            labelValueValorLiq.setText(String.valueOf(liquido));   
+    }
+    
     public void calcularTaxasEValorLiq(){
-                        // !!! PAGAMENTO ESTA SEM CLASSE DE NEGOCIO
-            // consigo acessar tudo direto aqui embaixo?? sem saber especificamente qual tipo de pagamento foi criado?
-            labelValueTaxaEmPercent.setText(pagamento.getTaxaOperacao().toString());
-            labelValueTaxaEmReal.setText(((pagamento.getTaxaOperacao())*(compra.getValorBruto())).toString());
-            labelValueValorLiq.setText(pagamento.calcularValorLiquido.toString());   
     }
     
     
