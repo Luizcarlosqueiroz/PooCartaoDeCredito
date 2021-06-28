@@ -1,8 +1,5 @@
 package vendedor;
 
-import vendedor.Vendedor;
-import vendedor.VendedorDados;
-
 public class VendedorNegocio {
     
     public void inserirVendedor(Vendedor vendedor) throws Exception{

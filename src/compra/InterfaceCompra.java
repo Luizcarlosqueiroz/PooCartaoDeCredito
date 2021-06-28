@@ -7,6 +7,7 @@ package compra;
 
 import java.util.Date;
 import javax.swing.JOptionPane;
+import maquinaCartao.Maquineta;
 import pagamento.ModalCredito;
 import pagamento.ModalParcelado;
 import pagamento.ModalRotativo;
@@ -49,8 +50,9 @@ public class InterfaceCompra extends javax.swing.JFrame {
             labelValueValor.setVisible(false);
             btnConfirmar.setText("Inserir Método de Pagamento");
             
-            labelModoPagamento.setVisible(false);
-            selectModoPagamento.setVisible(false);
+            labelModoPagamento.setVisible(true);
+            selectModoPagamento.setVisible(true);
+            
             labelParcelas.setVisible(false);
             selectParcelas.setVisible(false);
             labelTaxaEmPercent.setVisible(false);
@@ -114,14 +116,14 @@ public class InterfaceCompra extends javax.swing.JFrame {
     public void gerarPagamento(String metodoPagamento){
         
         try{
-            Pagamento pagamento = new Pagamento(); //PRECISO CRIAR PAGAMENTO OU CRIO O MODAL???
+            Pagamento pagamento = new Pagamento();
             
             double taxa;
             double liquido;
             double taxaPaga;
             
             switch (metodoPagamento) {
-                case "debito":
+                case "Débito":
                     ModalRotativo pagamentoDebito = new ModalRotativo();
                     labelParcelas.setVisible(false);
                     selectParcelas.setVisible(false);
@@ -132,7 +134,7 @@ public class InterfaceCompra extends javax.swing.JFrame {
                     
                     imprimirResultados(taxa, liquido, taxaPaga);
                     break;
-                case "creditoAVista":
+                case "Crédito à Vista":
                     ModalCredito pagamentoCreditoAVista = new ModalCredito();
                     labelParcelas.setVisible(false);
                     selectParcelas.setVisible(false);
@@ -143,7 +145,7 @@ public class InterfaceCompra extends javax.swing.JFrame {
                     
                     imprimirResultados(taxa, liquido, taxaPaga);
                     break;
-                case "creditoParcelado":
+                case "Crédito Parcelado":
                     ModalParcelado pagamentoCreditoParcelado = new ModalParcelado();
                     labelParcelas.setVisible(true);
                     selectParcelas.setVisible(true);
@@ -169,6 +171,8 @@ public class InterfaceCompra extends javax.swing.JFrame {
                 default:
                     return;
             }
+            
+            new Maquineta().setVisible(true);
             
         } catch  (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -316,7 +320,12 @@ public class InterfaceCompra extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 60;
         getContentPane().add(selectParcelas, gridBagConstraints);
 
-        selectModoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectModoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Débito", "Crédito à Vista", "Crédito Parcelado" }));
+        selectModoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectModoPagamentoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -350,6 +359,10 @@ public class InterfaceCompra extends javax.swing.JFrame {
         
         calcularTaxasEValorLiq();
     }//GEN-LAST:event_selectParcelasActionPerformed
+
+    private void selectModoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectModoPagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectModoPagamentoActionPerformed
 
     /**
      * @param args the command line arguments

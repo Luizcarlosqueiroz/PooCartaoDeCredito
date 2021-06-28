@@ -7,10 +7,6 @@ package comprador;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author jadil
- */
 public class FormComprador extends javax.swing.JFrame {
 
     /**
@@ -128,7 +124,10 @@ public class FormComprador extends javax.swing.JFrame {
             CompradorNegocio dados = new CompradorNegocio();
             dados.inserirComprador(comprador);
 
-            JOptionPane.showMessageDialog(this,"Vendedor cadastrado com sucesso");
+            JOptionPane.showMessageDialog(this,"Comprador cadastrado com sucesso");
+            
+            new FormComprador().setVisible(true);
+            dispose();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

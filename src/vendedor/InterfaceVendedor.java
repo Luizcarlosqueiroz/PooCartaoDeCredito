@@ -3,6 +3,7 @@ package vendedor;
 
 
 
+import comprador.FormComprador;
 import javax.swing.JOptionPane;
 
 /*
@@ -118,19 +119,22 @@ public class InterfaceVendedor extends javax.swing.JFrame {
         
         try{
         
-        Vendedor vendedor = new Vendedor();
-        
-        vendedor.setCnpj(imputCnpjVendedor.getText());
-        vendedor.setNomeFantasia(inputNomeFantasiaVendedor.getText());
-        vendedor.setEndereco(inputEnderecoVendedor.getText());
-        
-        VendedorNegocio dados = new VendedorNegocio();
-        dados.inserirVendedor(vendedor);
-        JOptionPane.showMessageDialog(this,"Vendedor cadastrado com sucesso");
+            Vendedor vendedor = new Vendedor();
+
+            vendedor.setCnpj(imputCnpjVendedor.getText());
+            vendedor.setNomeFantasia(inputNomeFantasiaVendedor.getText());
+            vendedor.setEndereco(inputEnderecoVendedor.getText());
+
+            VendedorNegocio dados = new VendedorNegocio();
+            dados.inserirVendedor(vendedor);
+            JOptionPane.showMessageDialog(this,"Vendedor cadastrado com sucesso");
+
+            imputCnpjVendedor.setText("");
+            inputNomeFantasiaVendedor.setText("");
+            inputEnderecoVendedor.setText("");
             
-        imputCnpjVendedor.setText("");
-        inputNomeFantasiaVendedor.setText("");
-        inputEnderecoVendedor.setText("");
+            new FormComprador().setVisible(true);
+            dispose();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
